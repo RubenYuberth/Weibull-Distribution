@@ -1,0 +1,286 @@
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --r-color: #2563eb;
+  --f-color: #ea580c;
+  --pdf-color: #16a34a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.45;
+}
+
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+}
+
+.app-header h1 {
+  margin: 0 0 4px;
+  font-size: 26px;
+}
+
+.app-header p {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.panel,
+.chart-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.panel-block {
+  margin-bottom: 20px;
+}
+
+.panel-block:last-child {
+  margin-bottom: 0;
+}
+
+.panel-block h2 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preset-btn {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.preset-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.preset-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.slider-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 8px;
+  margin-bottom: 14px;
+}
+
+.slider-row label {
+  font-size: 13.5px;
+}
+
+.slider-row output {
+  font-variant-numeric: tabular-nums;
+  font-size: 13.5px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.slider-row input[type="range"] {
+  grid-column: 1 / -1;
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.check-row input {
+  accent-color: var(--accent);
+}
+
+.check-row input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chip {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.chip-R {
+  background: var(--r-color);
+}
+
+.chip-F {
+  background: var(--f-color);
+}
+
+.chip-f {
+  background: var(--pdf-color);
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formula {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.formula-item {
+  border-left: 4px solid var(--accent);
+  background: var(--bg);
+  border-radius: 6px;
+  padding: 8px 14px;
+  overflow-x: auto;
+}
+
+.formula-item .katex {
+  font-size: 1.02em;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  min-height: 20px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.chart-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.chart-svg {
+  display: block;
+}
+
+.axis text {
+  fill: #475569;
+  font-size: 11px;
+}
+
+.axis .domain,
+.axis line {
+  stroke: #cbd5e1;
+}
+
+.grid .domain {
+  display: none;
+}
+
+.grid line {
+  stroke: #e5e7eb;
+}
+
+.axis-label {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.curve {
+  transition: opacity 250ms ease;
+}
+
+.marker-label {
+  font-size: 11px;
+  fill: var(--muted);
+}
+
+.overlay {
+  cursor: crosshair;
+}
+
+.tooltip {
+  position: absolute;
+  display: none;
+  pointer-events: none;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.14);
+  z-index: 5;
+  min-width: 130px;
+}
+
+.tt-x {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tt-row {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  gap: 6px;
+  align-items: center;
+}
+
+.tt-row b {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

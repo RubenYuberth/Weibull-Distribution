@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distribución de Weibull — Visualización interactiva</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <h1>Distribución de Weibull</h1>
+        <p>Visualización interactiva de la confiabilidad R(x), la probabilidad acumulada F(x) y la densidad f(x)</p>
+      </header>
+
+      <main class="layout">
+        <aside class="panel">
+          <section class="panel-block">
+            <h2>Valores predefinidos</h2>
+            <div class="presets" id="presets"></div>
+          </section>
+
+          <section class="panel-block">
+            <h2>Parámetros</h2>
+            <div class="slider-row">
+              <label for="slider-x0">Umbral x₀</label>
+              <output id="out-x0" for="slider-x0">0</output>
+              <input type="range" id="slider-x0" min="0" max="10" step="0.1" value="0" />
+            </div>
+            <div class="slider-row">
+              <label for="slider-eta">Escala η</label>
+              <output id="out-eta" for="slider-eta">1</output>
+              <input type="range" id="slider-eta" min="0.1" max="10" step="0.1" value="1" />
+            </div>
+            <div class="slider-row">
+              <label for="slider-b">Exponente b (forma)</label>
+              <output id="out-b" for="slider-b">1,5</output>
+              <input type="range" id="slider-b" min="1" max="10" step="0.01" value="1.5" />
+            </div>
+          </section>
+
+          <section class="panel-block">
+            <h2>Curvas</h2>
+            <label class="check-row">
+              <input type="checkbox" id="chk-R" checked />
+              <span class="chip chip-R"></span>
+              <span>R(x) · confiabilidad</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox" id="chk-F" />
+              <span class="chip chip-F"></span>
+              <span>F(x) · prob. acumulada</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox" id="chk-f" />
+              <span class="chip chip-f"></span>
+              <span>f(x) · densidad</span>
+            </label>
+          </section>
+
+          <section class="panel-block">
+            <h2>Marcadores</h2>
+            <label class="check-row">
+              <input type="checkbox" id="chk-markers" checked />
+              <span>Marcadores de vida útil</span>
+            </label>
+            <p class="hint">η (vida característica, R = e⁻¹ ≈ 0,368), mediana y media. Solo se muestran si caen dentro del rango de x.</p>
+          </section>
+        </aside>
+
+        <section class="chart-card">
+          <div class="formula" id="formula-root"></div>
+          <div class="legend" id="legend-root"></div>
+          <div class="chart-wrap" id="chart-root"></div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
