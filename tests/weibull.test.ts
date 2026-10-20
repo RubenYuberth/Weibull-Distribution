@@ -8,6 +8,7 @@ import {
   mean,
   median,
   mode,
+  percentile,
   sample,
   xDomain,
   yMaxF,
@@ -121,6 +122,20 @@ describe("métricas de vida útil", () => {
     expect(mode({ x0: 0, eta: 1, b: 3 })).toBeCloseTo(Math.pow(2 / 3, 1 / 3), 12);
     expect(mode({ x0: 0, eta: 1, b: 0.7 })).toBe(0);
     expect(mode({ x0: 0, eta: 1, b: 1 })).toBe(0);
+  });
+
+  it("percentil 10 para b = 1 es x0 + η·(−ln(0.9))", () => {
+    const p = { x0: 2, eta: 3, b: 1 };
+    expect(percentile(p, 0.1)).toBeCloseTo(2 + 3 * -Math.log(0.9), 12);
+  });
+
+  it("el percentil q cumple F(x_q) = q", () => {
+    const p = { x0: 1, eta: 2, b: 2.5 };
+    for (const q of [0.05, 0.1, 0.5, 0.9]) {
+      expect(F(percentile(p, q), p)).toBeCloseTo(q, 10);
+    }
+    const p2 = { x0: 0, eta: 1, b: 1 };
+    expect(F(percentile(p2, 0.1), p2)).toBeCloseTo(0.1, 10);
   });
 });
 

@@ -68,8 +68,9 @@ Donde:
 | $\eta$ | Escala (vida característica) | Tiempo en el que $R = e^{-1} \approx 36{,}8\%$ |
 | $b$ | Forma (exponente) | Controla la forma de la curva de fallas |
 
-Además, la app muestra tres marcadores de vida útil:
+Además, la app muestra cuatro marcadores de vida útil:
 
+- **Percentil 10 (P10)**: $x_0 + \eta\,(-\ln 0{,}9)^{1/b}$, donde $F = 0{,}1$
 - **Vida característica**: $x_0 + \eta$, donde $R = e^{-1} \approx 0{,}368$
 - **Mediana**: $x_0 + \eta\,(\ln 2)^{1/b}$
 - **Media**: $x_0 + \eta\,\Gamma\!\left(1 + \tfrac{1}{b}\right)$
@@ -84,7 +85,7 @@ Además, la app muestra tres marcadores de vida útil:
   - *Exponencial* ($b = 1$): tasa de falla constante
   - *Envejecimiento* ($b = 3$) y *Envejecimiento fuerte* ($b = 5$): desgaste
   - *Con umbral* ($x_0 = 2$)
-- Marcadores de vida útil (vida característica, mediana y media)
+- Marcadores de vida útil (P10, vida característica, mediana y media)
 - Crosshair con tooltip para leer valores puntuales en la gráfica
 - Eje $x$ y tope de $y$ que se autoajustan según los parámetros
 
@@ -138,7 +139,7 @@ navegador.
 | **Escala $\eta$** | Estira o comprime la distribución ($0{,}1$ a $10$) |
 | **Exponente $b$** | Cambia la forma de la curva ($1$ a $10$) |
 | **Curvas** | Muestra u oculta $R(x)$, $F(x)$ y $f(x)$ (siempre debe quedar al menos una visible) |
-| **Marcadores de vida útil** | Activa/desactiva las líneas de vida característica, mediana y media |
+| **Marcadores de vida útil** | Activa/desactiva las líneas de P10, vida característica, mediana y media |
 
 ## Guía de parámetros
 

@@ -63,6 +63,10 @@ export function mode(p: WeibullParams): number {
   return p.x0 + p.eta * Math.pow((p.b - 1) / p.b, 1 / p.b);
 }
 
+export function percentile(p: WeibullParams, q: number): number {
+  return p.x0 + p.eta * Math.pow(-Math.log(1 - q), 1 / p.b);
+}
+
 export function xDomain(p: WeibullParams): [number, number] {
   return [Math.max(0, p.x0 - 0.5 * p.eta), p.x0 + 4 * p.eta];
 }

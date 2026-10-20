@@ -13,6 +13,7 @@ import {
   f as pdf,
   mean,
   median,
+  percentile,
   sample,
   xDomain,
   yMaxF,
@@ -256,6 +257,7 @@ export class Chart {
   ): void {
     this.markersG.style("display", state.markers ? "" : "none");
     const items: MarkerDatum[] = [
+      { key: "p10", x: percentile(p, 0.1), label: "P10" },
       { key: "eta", x: characteristicLife(p), label: "η" },
       { key: "mediana", x: median(p), label: "mediana" },
       { key: "media", x: mean(p), label: "media" },
